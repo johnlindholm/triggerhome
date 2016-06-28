@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType name="paramTypeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="bytes"/>
+            <xs:enumeration value="int"/>
+            <xs:enumeration value="long"/>
+            <xs:enumeration value="double"/>
+            <xs:enumeration value="string"/>
+            <xs:enumeration value="boolean"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="paramType">
+        <xs:sequence>
+            <xs:element name="value" minOccurs="0" maxOccurs="1" type="xs:anyType"/>
+        </xs:sequence>
+        <xs:attribute name="name" use="required" type="xs:string"/>
+        <xs:attribute name="type" use="required" type="paramTypeType"/>
+    </xs:complexType>
+
+    <xs:complexType name="paramsType">
+        <xs:sequence>
+            <xs:element name="param" maxOccurs="unbounded" type="paramType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="params" type="paramsType"/>
+
+    <xs:element name="param" type="paramType"/>
+
+</xs:schema>

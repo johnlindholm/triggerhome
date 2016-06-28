@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<message source_ip="192.168.1.0" dest_ip="192.168.1.14" version="1.0" dest_service_id="" message_id="" source_service_id="" type="request">
+    <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+    <!--xsi:noNamespaceSchemaLocation="message.xsd" >-->
+    <timestamp>12345679</timestamp>
+    <request name="take_picture">
+        <params>
+            <param name="width_res" type="int">
+                <value>640</value>
+            </param>
+            <param name="height_res" type="int">
+                <value>480</value>
+            </param>
+        </params>
+    </request>
+</message>

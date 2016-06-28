@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<assembly id="9df587a4-52da-4f66-8412-2d1cb4f943ea" name="AssemblyName" version="1.0">
+    <services>
+        <service name="SpeedTest" serviceId="4f8ef86a-6112-4f1e-88af-ed588148d54b" version="1.0"/>
+    </services>
+    <init>
+        <send requestName="echo" serviceId="4f8ef86a-6112-4f1e-88af-ed588148d54b"/>
+    </init>
+    <triggers>
+        <trigger requestName="echo" serviceId="4f8ef86a-6112-4f1e-88af-ed588148d54b">
+            <send requestName="echo" serviceId="4f8ef86a-6112-4f1e-88af-ed588148d54b"/>
+        </trigger>
+    </triggers>
+</assembly>

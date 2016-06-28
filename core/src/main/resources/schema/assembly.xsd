@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="service.xsd"/>
+    <xs:include schemaLocation="param.xsd"/>
+
+    <xs:complexType name="assemblyType">
+        <xs:sequence>
+            <xs:element ref="services" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="init" minOccurs="0" maxOccurs="1" type="initType"/>
+            <xs:element name="triggers" minOccurs="0" maxOccurs="1" type="triggersType"/>
+            <xs:element name="repeats" minOccurs="0" maxOccurs="1" type="repeatsType"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="version" type="xs:double" use="required"/>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:element name="assembly" type="assemblyType"/>
+
+    <xs:complexType name="initType">
+        <xs:sequence>
+            <xs:element name="send" minOccurs="1" maxOccurs="unbounded" type="sendType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="triggersType">
+        <xs:sequence>
+            <xs:element name="trigger" minOccurs="1" maxOccurs="unbounded" type="triggerType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="repeatsType">
+        <xs:sequence>
+            <xs:element name="repeat" minOccurs="1" maxOccurs="unbounded" type="repeatType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="triggerType">
+        <xs:sequence>
+            <xs:element name="send" minOccurs="1" maxOccurs="unbounded" type="sendType"/>
+        </xs:sequence>
+        <xs:attribute name="serviceId" type="xs:string" use="required"/>
+        <xs:attribute name="requestName" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="repeatType">
+        <xs:sequence>
+            <xs:element name="send" minOccurs="1" maxOccurs="1" type="sendType"/>
+        </xs:sequence>
+        <xs:attribute name="interval" type="xs:int" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="sendType">
+        <xs:choice minOccurs="0" maxOccurs="1">
+            <xs:element name="triggerParams" minOccurs="1" maxOccurs="unbounded" type="triggerParamsType"/>
+            <xs:element ref="params" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:choice>
+        <xs:attribute name="serviceId" type="xs:string" use="required"/>
+        <xs:attribute name="requestName" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="triggerParamsType">
+        <xs:sequence>
+            <xs:element name="triggerParam" minOccurs="0" maxOccurs="unbounded" type="triggerParamType"/>
+            <xs:element ref="param" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="triggerParamType">
+        <xs:attribute name="paramRefName" use="required" type="xs:string"/>
+        <xs:attribute name="name" use="required" type="xs:string"/>
+    </xs:complexType>
+</xs:schema>

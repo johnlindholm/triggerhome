@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:include schemaLocation="param.xsd"/>
+    <xs:include schemaLocation="request.xsd"/>
+    <xs:include schemaLocation="response.xsd"/>
+    <xs:include schemaLocation="service.xsd"/>
+
+    <xs:simpleType name="messageTypeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="request"/>
+            <xs:enumeration value="response"/>
+            <xs:enumeration value="heartbeat"/>
+            <xs:enumeration value="heartattack"/>
+            <xs:enumeration value="ping"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="messageType">
+        <xs:sequence>
+            <xs:element name="timestamp" minOccurs="1" maxOccurs="1" type="xs:unsignedLong"/>
+            <xs:element name="requestMessageId" minOccurs="0" maxOccurs="1" type="xs:string"/>
+            <xs:choice minOccurs="0" maxOccurs="1">
+                <xs:element ref="request" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="response" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="services" minOccurs="0" maxOccurs="1"/>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="source_ip" use="required" type="xs:string"/>
+        <xs:attribute name="dest_ip" use="required" type="xs:string"/>
+        <xs:attribute name="version" use="required" type="xs:string"/>
+        <xs:attribute name="source_service_id" use="required" type="xs:string"/>
+        <xs:attribute name="dest_service_id" use="required" type="xs:string"/>
+        <xs:attribute name="message_id" use="required" type="xs:string"/>
+        <xs:attribute name="type" use="required" type="messageTypeType"/>
+    </xs:complexType>
+
+    <xs:element name="message" type="messageType"/>
+
+</xs:schema>
+
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<message source_ip="192.168.1.0" dest_ip="192.168.1.14" version="1.0" dest_service_id="234" message_id="" source_service_id="" type="response">
+    <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+    <!--xsi:noNamespaceSchemaLocation="message.xsd" >-->
+    <timestamp>12345679</timestamp>
+
+    <response>
+        <params>
+            <param name="picture" type="bytes">
+                <value>[1, 2, 3, 4]</value>
+            </param>
+            <param name="timestamp" type="long">
+                <value>168169467</value>
+            </param>
+        </params>
+    </response>
+</message>

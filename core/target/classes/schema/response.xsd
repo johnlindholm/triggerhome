@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:include schemaLocation="param.xsd"/>
+
+    <xs:complexType name="responseType">
+        <xs:sequence>
+            <xs:element name="params" minOccurs="0" maxOccurs="1" type="paramsType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="response" type="responseType"/>
+
+</xs:schema>

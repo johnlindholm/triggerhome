@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<assembly id="8cf587a4-52da-4f66-8412-2d1cb4f943ea" name="AssemblyName" version="1.0">
+    <services>
+        <service name="TestService" serviceId="74d3f1b6-40f8-457e-8a43-a7c698f083c2" version="1.0"/>
+        <service name="TestService" serviceId="7c616a5e-cfde-4500-aaef-78e27be81c00" version="1.0"/>
+    </services>
+    <init>
+        <send requestName="getA" serviceId="74d3f1b6-40f8-457e-8a43-a7c698f083c2"/>
+    </init>
+    <triggers>
+        <trigger requestName="getA" serviceId="74d3f1b6-40f8-457e-8a43-a7c698f083c2">
+            <send requestName="getB" serviceId="74d3f1b6-40f8-457e-8a43-a7c698f083c2"/>
+        </trigger>
+        <trigger requestName="getB" serviceId="74d3f1b6-40f8-457e-8a43-a7c698f083c2">
+            <send requestName="getC" serviceId="74d3f1b6-40f8-457e-8a43-a7c698f083c2"/>
+        </trigger>
+        <trigger requestName="getC" serviceId="74d3f1b6-40f8-457e-8a43-a7c698f083c2">
+            <send requestName="getD" serviceId="74d3f1b6-40f8-457e-8a43-a7c698f083c2"/>
+        </trigger>
+        <trigger requestName="getD" serviceId="74d3f1b6-40f8-457e-8a43-a7c698f083c2">
+            <send requestName="print" serviceId="7c616a5e-cfde-4500-aaef-78e27be81c00">
+                <triggerParams>
+                    <param name="toPrint" type="string">
+                        <value>ABCD</value>
+                    </param>
+                </triggerParams>
+            </send>
+        </trigger>
+    </triggers>
+</assembly>

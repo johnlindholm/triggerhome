@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+    <members>
+        <member>
+            <name>John Doe</name>
+            <phone>123-456-7890</phone>
+        </member>
+        <member>
+            <name>Bob Smith</name>
+            <phone>123-555-1212</phone>
+        </member>
+    </members>
+</root>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:include schemaLocation="param.xsd"/>
+    <xs:include schemaLocation="request.xsd"/>
+    <xs:include schemaLocation="response.xsd"/>
+
+    <xs:complexType name="serviceType">
+        <xs:sequence>
+            <xs:element name="requests" minOccurs="0" maxOccurs="unbounded" type="requestsType"/>
+            <xs:element name="alternatives" minOccurs="0" maxOccurs="unbounded" type="servicesType"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="version" type="xs:double" use="required"/>
+        <xs:attribute name="serviceId" type="xs:string" use="required"/>
+        <xs:attribute name="ipAddress" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="servicesType">
+        <xs:sequence>
+            <xs:element name="service" minOccurs="1" maxOccurs="unbounded" type="serviceType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="service" type="serviceType"/>
+
+    <xs:element name="services" type="servicesType"/>
+
+</xs:schema>

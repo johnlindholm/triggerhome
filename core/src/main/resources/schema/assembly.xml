@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<assembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="1234" name="sdsdsd" version="1.0"
+          xsi:noNamespaceSchemaLocation="assembly.xsd">
+    <services>
+        <service serviceId="1234-1234-1234-1234" name="Camera_1" version="1.0">
+            <alternatives>
+                <service name="sdfg" version="1.0" serviceId="asdfg"/>
+                <service name="sdfg" version="1.0" serviceId="asdfg"/>
+                <service name="sdfg" version="1.0" serviceId="asdfg"/>
+            </alternatives>
+        </service>
+        <service serviceId="1234-1234-1234-1234" name="Camera_1" version="1.0">
+        </service>
+    </services>
+    <init>
+        <send serviceId="1234-1234-1234-1234" requestName="startStream">
+            <params>
+                <param name="width_res" type="int">
+                    <value>640</value>
+                </param>
+                <param name="height_res" type="int">
+                    <value>480</value>
+                </param>
+                <param name="duration" type="int">
+                    <value>5000</value>
+                </param>
+            </params>
+        </send>
+        <send serviceId="1234-1234-1234-1234" requestName="startStream">
+            <params>
+                <param name="width_res" type="int">
+                    <value>640</value>
+                </param>
+                <param name="height_res" type="int">
+                    <value>480</value>
+                </param>
+                <param name="duration" type="int">
+                    <value>5000</value>
+                </param>
+            </params>
+        </send>
+    </init>
+    <triggers>
+        <trigger serviceId="1234-1234-1234-1234" requestName="req1">
+            <send serviceId="9877-1234-1234-1234" requestName="req1"/>
+            <send serviceId="9877-1234-1234-1234" requestName="req1">
+                <triggerParams>
+                    <triggerParam name="" paramRefName=""/>
+                    <param name="" type="boolean">
+                        <value>true</value>
+                    </param>
+                </triggerParams>
+            </send>
+        </trigger>
+    </triggers>
+    <repeats>
+        <repeat interval="5000">
+            <send serviceId="1234-1234-1234-1234" requestName="startStream"/>
+        </repeat>
+        <repeat interval="5000">
+            <send serviceId="1234-1234-1234-1234" requestName="startStream">
+                <params>
+                    <param name="width_res" type="int">
+                        <value>640</value>
+                    </param>
+                    <param name="height_res" type="int">
+                        <value>480</value>
+                    </param>
+                    <param name="duration" type="int">
+                        <value>5000</value>
+                    </param>
+                </params>
+            </send>
+        </repeat>
+    </repeats>
+</assembly>

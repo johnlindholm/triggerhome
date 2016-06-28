@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:include schemaLocation="param.xsd"/>
+    <xs:include schemaLocation="response.xsd"/>
+
+    <xs:complexType name="requestType">
+        <xs:sequence>
+            <xs:element name="params" minOccurs="0" maxOccurs="1" type="paramsType"/>
+            <xs:element name="response" minOccurs="0" maxOccurs="1" type="responseType"/>
+        </xs:sequence>
+        <xs:attribute name="name" use="required" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="requestsType">
+        <xs:sequence>
+            <xs:element name="request" maxOccurs="unbounded" type="requestType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="request" type="requestType"/>
+
+</xs:schema>
